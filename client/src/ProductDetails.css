@@ -1,0 +1,87 @@
+/* Applying the background image */
+.product-details-container {
+    height: 100vh;
+    background-image: url('http://localhost:3001/uploads/ProductList.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* .card {
+    width: 80%;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    animation: float 5s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  } */
+
+
+  
+  /* Card displaying product details */
+  .card {
+    width: 80%;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    animation: float 5s ease-in-out infinite;
+    position: relative;
+  }
+  
+  /* Create the twinkling pearl effect using pseudo-elements */
+  .card::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px white;
+    top: 20px; /* Adjust as needed */
+    left: 30px; /* Adjust as needed */
+    animation: twinkle 1.5s infinite alternate;
+  }
+  
+  /* Keyframes for the floating card animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* Keyframes for the twinkling effect */
+  @keyframes twinkle {
+    0% {
+      opacity: 0.2;
+      box-shadow: 0 0 5px white;
+    }
+    100% {
+      opacity: 1;
+      box-shadow: 0 0 10px white;
+    }
+  }
+  
+  /* Custom styles for Toastify close button */
+.Toastify__close-button {
+  width: 16px;  /* Reducing the width */
+  height: 16px;  /* Reducing the height */
+  padding: 0;  /* Remove padding if necessary */
+  color: #cc9a9a;  /* Adjust the color if needed */
+}
+
+/* You might also want to adjust the icon inside the button, especially if it's an SVG */
+.Toastify__close-button svg {
+  width: 100%;
+  height: 100%;
+}

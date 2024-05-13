@@ -1,0 +1,129 @@
+/* Background image with subtle animation effect */
+/* .home-page-container {
+    height: 100vh;
+    background-image: url('http://localhost:3001/uploads/HomePage.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  } */
+  
+  /* General Layout */
+.home-page-container {
+    height: 100vh;
+    background-image: url('http://localhost:3001/uploads/HomePage.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .navbar-links a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .content-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: center;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+    }
+    .navbar-links a {
+      margin: 5px 0;
+    }
+    .button-group {
+      flex-direction: column;
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.fa-user-circle {
+    font-size: 1.5rem;
+    margin-right: 5px;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: #333; /* Adjust color based on your theme */
+}
+
+.dropdown-menu {
+    right: 0; /* Ensures the dropdown aligns right */
+}
+
+.navbar-links a, .dropdown-toggle {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.navbar-links a.hidden, .dropdown-toggle.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dropdown-item:focus , .dropdown-item:hover {
+  margin-left: 0px;
+}
+
+.dropDownContents {
+  margin-left: 0px;
+  background: sandybrown;
+}
+
+
+  
+  

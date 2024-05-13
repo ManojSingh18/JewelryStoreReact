@@ -1,0 +1,153 @@
+/* General container styles */
+.cart-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: margin-right 0.5s ease;  
+}
+
+/* Apply background only if the cart is empty */
+.cart-container.empty {
+    background-image: url('http://localhost:3001/uploads/CartEmpty.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.cart-container:not(.empty) {
+    background-image: url('http://localhost:3001/uploads/CartNotEmpty.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+
+.cart-header {
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 2.5em;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.cart-empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 343px;
+    margin-top:300px;
+}
+
+.linkclass {
+    color:#ffffff !important;
+}
+
+.cart-items {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .cart-items li.adding, .cart-items li.removing {
+    transform: scale(1.1);
+    opacity: 0.8;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+  
+
+
+  .cart-items li {
+    list-style: none;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    animation: itemAppear 0.3s ease-in-out;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+@keyframes itemAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.checkout-success {
+    position: relative;
+    overflow: hidden;
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.checkout-success:hover {
+    background-color: #218838;
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+    animation: fizzy-effect 1s infinite;
+}
+
+.checkout-success:active {
+    transform: scale(0.98);
+    background-color: #1e7e34;
+}
+
+/* Keyframes for fizzy effect */
+@keyframes fizzy-effect {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 10px 20px rgba(40, 167, 69, 0);
+    }
+}
+
+/* Fizzy effect on focus */
+.checkout-success:focus:not(:active) {
+    animation: fizzy-effect 1s infinite;
+}
+
+/* Add some particles when the button is clicked */
+.checkout-success:active::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(40, 167, 69, 1) 20%, transparent 20%);
+    transform: translate(-50%, -50%) scale(1);
+    animation: explode 0.3s ease-out forwards;
+}
+
+@keyframes explode {
+    100% {
+        transform: translate(-50%, -50%) scale(4);
+        opacity: 0;
+    }
+}
+
+
