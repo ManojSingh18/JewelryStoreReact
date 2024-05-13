@@ -25,4 +25,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # db config file
-/config
+config/
