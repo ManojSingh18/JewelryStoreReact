@@ -16,7 +16,7 @@ function HomePage() {
   return (
       <div className="home-page-container">
           <div className="content-container">
-              <h1>Welcome to Our Jewelry Shop{user ? `, ${user.username}` : ''}</h1>
+          <h1>Welcome to Our Jewelry Shop{user && user.username ? `, ${user.username}` : ''}</h1>
               <p>Explore our exclusive collection of fine jewelry.</p>
               <GoldRate />
               <Link to="/products" className="btn btn-primary">Shop Now</Link>
