@@ -6,7 +6,7 @@ import '../Cart.css'; // Create and import a new CSS file for custom styles
 function Cart() {
     const [cartItems, setCartItems] = useState([]);
     const checkoutButtonRef = useRef(null); 
-    const [username, setUsername] = useState('');
+    const [ setUsername] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -30,6 +30,7 @@ function Cart() {
                 button.removeEventListener('click', createParticles);
             };
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
      // Function to simulate particle effect

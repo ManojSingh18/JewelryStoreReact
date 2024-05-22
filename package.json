@@ -2,24 +2,41 @@
   "name": "jewellery-website",
   "version": "0.1.0",
   "private": true,
+  "type": "commonjs",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "assert": "^2.1.0",
     "axios": "^1.6.8",
     "body-parser": "^1.20.2",
+    "browserify-zlib": "^0.2.0",
+    "buffer": "^6.0.3",
+    "customize-cra": "^1.0.0",
+    "electron-is-dev": "^3.0.1",
     "express": "^4.19.2",
+    "https-browserify": "^1.0.0",
     "mysql": "^2.18.1",
+    "process": "^0.11.10",
     "react": "^18.3.1",
+    "react-app-rewired": "^2.2.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.3",
+    "util": "^0.12.5",
+    "web-vitals": "^2.1.4",
+    "workbox-webpack-plugin": "^6.5.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject",
+    "electron-dev": "cross-env ELECTRON_START_URL=http://localhost:3000 electron .",
+    "electron-pack": "npm run build && electron-builder",
+    "dist": "electron-builder"
   },
   "eslintConfig": {
     "extends": [
@@ -40,8 +57,38 @@
     ]
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "client/index.js",
+  "main": "main.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "electron": "^30.0.6",
+    "electron-builder": "^23.0.0",
+    "workbox-webpack-plugin": "^6.5.4"
+  },
+  "build": {
+    "appId": "com.sample.jewellerywebsite",
+    "productName": "JewelleryWebsite",
+    "directories": {
+      "buildResources": "assets"
+    },
+    "files": [
+      "client/build/**/*",
+      "main.js",
+      "preload.js",
+      "package.json"
+    ],
+    "extraMetadata": {
+      "main": "main.js"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
 }

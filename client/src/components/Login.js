@@ -77,8 +77,8 @@ function Login({ onLogin }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const { user,setUser } = useContext(UserContext); // Corrected use of context via custom hook
-    const [, forceUpdate] = useState();
+    const { setUser } = useContext(UserContext); // Corrected use of context via custom hook
+    // const [, forceUpdate] = useState();
 
     const handleLogin = async (e) => {
         e.preventDefault();

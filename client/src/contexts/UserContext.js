@@ -13,7 +13,9 @@ export const UserProvider = ({ children }) => {
 
     const fetchUser = async () => {
         try {
-            const response = await axios.get('http://localhost:3001/api/users/profile', { withCredentials: true });
+            const response = await axios.get('http://localhost:3001/api/users/profile', {
+                withCredentials: true
+            });
             setUser(response.data);
             console.log("Fetched user data:", response.data);
         } catch (error) {

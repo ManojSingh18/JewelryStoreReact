@@ -8,6 +8,7 @@ const productRoutes = require('./routes/productRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const checkoutRoutes = require('./routes/checkoutRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const fetchGoldRate = require('./routes/scrapGoldRates');
 
 
 
@@ -18,9 +19,18 @@ const cors = require('cors');
 
 // Enable CORS with credentials support
 app.use(cors({
-    origin: 'http://localhost:3000', // Adjust to your frontend's URL
+    origin: ['http://localhost:3000', 'file://'], // Allow both web and Electron origins
     credentials: true
 }));
+
+
+// Add middleware to handle Electron-specific requests
+app.use((req, res, next) => {
+    if (req.headers['user-agent'] && req.headers['user-agent'].includes('Electron')) {
+      res.setHeader('Access-Control-Allow-Origin', 'file://');
+    }
+    next();
+  });
 
 // Set up session handling as before
 app.use(session({
@@ -36,6 +46,25 @@ app.get('/', (req, res) => {
 });
 
 app.use(express.json()); // for parsing application/json
+
+app.get('/api/gold-rate', async (req, res) => {
+    try {
+      const goldRates = await fetchGoldRate();
+      if (goldRates) {
+        const timestamp = new Date().toISOString();
+        console.log('Gold Rates:', goldRates);
+        console.log('Timestamp:', timestamp);
+        res.json({ goldRates, timestamp });
+      } else {
+        res.status(500).json({ error: 'Failed to fetch gold rates' });
+      }
+    } catch (error) {
+      console.error('Error in /api/gold-rate endpoint:', error.message);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+  
+
 app.use('/api/users', userRoutes);
 
 

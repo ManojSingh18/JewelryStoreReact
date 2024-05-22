@@ -49,6 +49,7 @@ function Register({ onRegister }) {
  
          try {
           const response = await axios.post('http://localhost:3001/api/users/register', userData);
+          console.log("Response Object holds", response);
           toast.success('Registration successful!');
           navigate('/');
       } catch (error) {

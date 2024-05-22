@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, Routes, Route,useNavigate} from 'react-router-dom';
+import { Link, Routes, Route} from 'react-router-dom';
 import axios from 'axios';
 import Admin from './components/AdminPage';
 import HomePage from './components/HomePage';
@@ -10,7 +10,7 @@ import Checkout from './components/Checkout';
 import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/UserProfiles'; // Adjust the path as necessary
-import { ToastContainer } from 'react-toastify';
+// import { ToastContainer } from 'react-toastify';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './HomePage.css';
@@ -27,8 +27,8 @@ import { UserContext } from './contexts/UserContext';
 function App() {
     // const [user, setUser] = useState(null);
     const [isAdmin, setIsAdmin] = useState(false);
-    const navigate = useNavigate();
-    const [, forceUpdate] = useState();
+    // const navigate = useNavigate();
+    // const [, forceUpdate] = useState();
     const { user, setUser } = useContext(UserContext);
 
 
@@ -49,6 +49,7 @@ function App() {
             .catch(error => console.error('Error fetching user data:', error));
     
         return () => { isMounted = false; }; // Cleanup function to set isMounted to false
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
 
